@@ -1,0 +1,15 @@
+{
+    "title": "leo-notes",
+    "description": "notes",
+    "plugins": [
+        "toc",
+        "back-to-top-button",
+        "toggle-chapters",
+        "search-plus",
+        "-sharing",
+        "mtime",
+        "popup"
+    ],
+    "pluginsConfig": {},
+    "version": "v0.1.0"
+}
