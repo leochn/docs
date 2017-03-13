@@ -7,21 +7,13 @@
         * [01JavaScript入门](JavaScript/01JavaScript入门.md)
     * [01JavaScript入门](JavaScript/01JavaScript入门.md)
     * [01JavaScript入门](JavaScript/01JavaScript入门.md)
-    * [01JavaScript入门](JavaScript/01JavaScript入门.md)
-    * [01JavaScript入门](JavaScript/01JavaScript入门.md)
-    * [01JavaScript入门](JavaScript/01JavaScript入门.md)
-    * [01JavaScript入门](JavaScript/01JavaScript入门.md)
-    * [01JavaScript入门](JavaScript/01JavaScript入门.md)
-    * [01JavaScript入门](JavaScript/01JavaScript入门.md)
-    * [01JavaScript入门](JavaScript/01JavaScript入门.md)
-    * [01JavaScript入门](JavaScript/01JavaScript入门.md)
-    * [01JavaScript入门](JavaScript/01JavaScript入门.md)
-    * [01JavaScript入门](JavaScript/01JavaScript入门.md)
-    * [01JavaScript入门](JavaScript/01JavaScript入门.md)
-    * [01JavaScript入门](JavaScript/01JavaScript入门.md)
 
 -----
 * [Tools](Tools/README.md)
-    * [01GitBook入门](Tools/01GitBook入门.md)
+    * [gitbook入门01](Tools/gitbook入门01.md)
+    * [sublime01](Tools/sublime01.md)
+    * [docker01](Tools/docker01.md)
+    * [docker02](Tools/docker02.md)
+    * [github01](Tools/github01.md)
 
 

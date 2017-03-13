@@ -46,7 +46,9 @@ drwx------  2 root root   24 3月   3 12:59 volumes
 ```
 # docker push NAME [:TAG]
 ```
+
 ## 构建镜像:使用commit
+
 
 保存对容器的修改,并再次使用;自定义镜像的能力;以软件的形式打包并分发服务及其运行环境.
 
@@ -54,7 +56,9 @@ drwx------  2 root root   24 3月   3 12:59 volumes
 # docker commit // 通过容器构建
 # docker build  // 通过Dockerfile文件构建
 ```
+
 * 使用commit 构建镜像
+ 
 ```
 # docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
 [root@localhost docker]# docker ps -a   //   web 容器是之前安装好nginx的容器
@@ -121,6 +125,9 @@ VOLUME:目录挂载
 EXPOSE:端口
 RUN:进程要一直运行下去
 //////
+```
+
+```
 [root@localhost ~]# mkdir /opt/docker-file
 [root@localhost ~]# cd /opt/docker-file/
 [root@localhost docker-file]# mkdir nginx
@@ -170,7 +177,8 @@ RUN:进程要一直运行下去
  28 CMD ["nginx"]
 ```
 
-* Dockerfile
+* Dockerfile 构建镜像过程
+
 ```
 [root@localhost nginx]# pwd
 /opt/docker-file/nginx
@@ -179,39 +187,10 @@ RUN:进程要一直运行下去
 -rw-r--r-- 1 root root     641 3月  11 14:06 Dockerfile
 -rw-r--r-- 1 root root  967773 2月  14 23:42 nginx-1.11.10.tar.gz
 -rw-r--r-- 1 root root 2062258 3月  11 13:52 pcre-8.39.tar.gz
-[root@localhost nginx]# cat Dockerfile 
-# This is My first Dockerfile
-# Version 1.0
-# Author: leo
-
-#Base images
-FROM centos
-
-#MAINTAINER
-MAINTAINER leo
-
-#ADD
-ADD pcre-8.39.tar.gz /usr/local/src
-ADD nginx-1.11.10.tar.gz /usr/local/src
-
-#RUN
-RUN yum install -y wget gcc gcc-c++ make openssl-devel
-RUN useradd -s /sbin/nologin -M www
-
-#WORKDIR
-WORKDIR /usr/local/src/nginx-1.11.10
-
-RUN ./configure --prefix=/usr/local/nginx --user=www --group=www --with-http_ssl_module --with-http_stub_status_module --with-pcre=/usr/local/src/pcre-8.39 && make && make install
-RUN echo "daemon off;" >> /usr/local/nginx/conf/nginx.conf
-
-ENV PATH /usr/local/nginx/sbin:$PATH
-EXPOSE 80
-
-CMD ["nginx"]
 [root@localhost nginx]# docker build -t centos-nginx-file:v1 /opt/docker-file/nginx/
 [root@localhost nginx]# docker build -t centos-nginx-file:v1 .  //如果在同一目录,直接用.就可以了.否则需要绝对路径.
-.............................
-.............................
+//.............................
+//.............................
 make[1]: Leaving directory `/usr/local/src/nginx-1.11.10'
  ---> 2e0b113c1100
 Removing intermediate container 258f0d3c6738
@@ -268,5 +247,5 @@ Commercial support is available at
 <p><em>Thank you for using nginx.</em></p>
 </body>
 </html>
-[root@localhost nginx]# 
+[root@localhost nginx]#
 ```
