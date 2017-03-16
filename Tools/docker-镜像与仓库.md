@@ -5,7 +5,7 @@
 ## 查看和删除镜像
 
 * 镜像的存储地址: /var/lib/docker
-```
+```bash
 [root@localhost lib]# cd /var/lib/docker
 [root@localhost docker]# ll
 总用量 16
@@ -57,10 +57,9 @@ drwx------  2 root root   24 3月   3 12:59 volumes
 # docker build  // 通过Dockerfile文件构建
 ```
 
-* 使用commit 构建镜像
+* 使用commit 构建镜像,# docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
  
-```
-# docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+```bash
 [root@localhost docker]# docker ps -a   //   web 容器是之前安装好nginx的容器
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
 fb587df3ab6e        centos              "/bin/bash"              32 hours ago        Exited (7) 30 hours ago                         web
@@ -127,7 +126,7 @@ RUN:进程要一直运行下去
 //////
 ```
 
-```
+```bash
 [root@localhost ~]# mkdir /opt/docker-file
 [root@localhost ~]# cd /opt/docker-file/
 [root@localhost docker-file]# mkdir nginx
@@ -179,7 +178,7 @@ RUN:进程要一直运行下去
 
 * Dockerfile 构建镜像过程
 
-```
+```bash
 [root@localhost nginx]# pwd
 /opt/docker-file/nginx
 [root@localhost nginx]# ll

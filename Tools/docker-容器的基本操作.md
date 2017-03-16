@@ -5,7 +5,7 @@
 ## 容器的基本操作
 
 * 启动容器
-```
+```bash
 $ docker run image_name echo "hello word"
 [root@localhost /]# docker run centos echo "hello world"
 hello world
@@ -14,7 +14,7 @@ hello world
 ```
 
 * 启动交互式容器
-```
+``` bash
 docker run -i -t centos /bin/bash // 容器启动时执行bash命令
 [root@localhost ~]# docker run -i -t centos /bin/bash                    
 [root@0737724188ef /]# ps -ef
@@ -28,7 +28,7 @@ exit
 [root@localhost ~]#
 ```
 * 列出所有的container ：$ docker ps -a
-```
+```bash
              boring_noyce
 [root@localhost ~]# docker ps -a
 CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS                          PORTS               NAMES
@@ -40,14 +40,14 @@ a8d2d93c0f7f        centos              "echo hhh"             6 days ago       
 ```
 
 * 列出最近一次启动的container：$ docker ps -l
-```
+```bash
 [root@localhost ~]# docker ps -l
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                          PORTS               NAMES
 0737724188ef        centos              "/bin/bash"         3 minutes ago       Exited (0) About a minute ago                       peaceful_hypatia
 ```
 
 * 查看容器的信息 docker inspect [CONTAINER ID]
-```
+```bash
 [root@localhost ~]# docker inspect 0737724188ef 
 [
     {
@@ -229,7 +229,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 ```
 
 * 自定义容器名字:docker run --name=container02 -i -t centos /bin/bash
-```
+```bash
 [root@localhost ~]# docker run --name=container02 -i -t centos /bin/bash 
 [root@b3d543663ab3 /]# exit
 exit
@@ -240,7 +240,7 @@ b3d543663ab3        centos              "/bin/bash"         17 seconds ago      
 ```
 
 * 重新启动停止的容器: docker start [-i] 容器名
-```
+```bash
 [root@localhost ~]# docker start -i container02
 [root@b3d543663ab3 /]# exit
 exit
@@ -248,7 +248,7 @@ exit
 ```
 
 * 删除已经停止的容器: docker rm 容器名
-```
+```bash
 [root@localhost ~]# docker ps -a
 CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS                          PORTS               NAMES
 b3d543663ab3        centos              "/bin/bash"            5 minutes ago       Exited (0) About a minute ago                       container02
@@ -277,7 +277,7 @@ a8d2d93c0f7f        centos              "echo hhh"             6 days ago       
 
 * 以守护式形式运行容器: docker run -i -t IMAGE /bin/bash
 * 通过 Ctrl+P   Ctrl+Q 组合键来退出交互式容器的bash,容器就会在后台运行
-```
+```bash
 [root@localhost ~]# docker run -i -t centos /bin/bash 
 [root@ef411190102a /]# [root@localhost ~]# 
 [root@localhost ~]# docker ps
@@ -287,7 +287,7 @@ ef411190102a        centos              "/bin/bash"         About a minute ago  
 ```
 
 * 附加到运行中的容器：docker attach 容器名
-```
+```bash
 [root@localhost ~]# docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
 ef411190102a        centos              "/bin/bash"         About a minute ago   Up About a minute                       unruffled_agnesi
@@ -305,7 +305,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 ```
 
 * 启动守护式容器：docker run -d 镜像名 [COMMAND] [ARG...]
-```
+```bash
 [root@localhost ~]# docker run --name dc2 -d centos /bin/sh -c "while true;do echo hello world; sleep 1;done"
 eab970bdf4d397440d9c970fbfe5ee3eabcc58b7e5a16234132e661bdfdacd32
 [root@localhost ~]# docker ps
@@ -317,7 +317,7 @@ eab970bdf4d3        centos              "/bin/sh -c 'while..."   7 seconds ago  
 * 查看容器日志：docker logs [-f] [-t] [--tail] 容器名
 
 docker logs -tf --tail 10 dc2 // 显示最新的10条数据
-```
+```bash
 [root@localhost ~]# docker logs -tf --tail 10 dc2
 2017-03-09T13:57:42.861587077Z hello world
 2017-03-09T13:57:43.865165504Z hello world
@@ -341,7 +341,7 @@ docker logs -tf --tail 10 dc2 // 显示最新的10条数据
 ```
 
 * 查看容器内进程：docker top 容器名
-```
+```bash
 [root@localhost ~]# docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 eab970bdf4d3        centos              "/bin/sh -c 'while..."   4 minutes ago       Up 4 minutes                            dc2
@@ -353,7 +353,7 @@ root                11305               10762               0                   
 ```
 
 * 在运行的容器内启动新进程：docker exec [-d] [-i] [-t] 容器名
-```
+```bash
 [root@localhost ~]# docker top dc2
 UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
 root                10762               10746               0                   21:55               ?                   00:00:00            /bin/sh -c while true;do echo hello world; sleep 1;done
@@ -370,7 +370,7 @@ root                11866               10762               0                   
 
 * 停止守护式容器：docker stop 容器名
 * 停止守护式容器：docker kill 容器名
-```
+```bash
 [root@localhost ~]# docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 eab970bdf4d3        centos              "/bin/sh -c 'while..."   11 minutes ago      Up 11 minutes                           dc2
@@ -399,7 +399,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 6.验证网站访问
 
 
-```
+```bash
 [root@localhost ~]# docker run -p 80 --name web -i -t centos /bin/bash
 [root@fb587df3ab6e /]# wget //查看有没有wget命令
 bash: wget: command not found
