@@ -248,3 +248,61 @@ Commercial support is available at
 </html>
 [root@localhost nginx]#
 ```
+
+安装tomcat
+```bash
+[root@localhost tomcat]# vim Dockerfile 
+  1 # This is My first Dockerfile
+  2 # Version 1.0
+  3 # Author: leo
+  4 
+  5 #Base images
+  6 FROM centos
+  7 
+  8 #MAINTAINER
+  9 MAINTAINER leo
+ 10 
+ 11 #ADD
+ 12 ADD apache-tomcat-9.0.0.M18.tar.gz /usr/local/src
+ 13 ADD jdk-7u55-linux-i586.tar.gz  /usr/local/src
+ 14 
+ 15 ENV PATH /usr/local/jdk1.7.0_55/bin:$PATH
+ 16 EXPOSE 80
+ 17 
+ 18 #启动Tomcat
+ 19 CMD ["catalina.sh", "run"]
+                                                                                                                 
+"Dockerfile" 19L, 310C 已写入                                                                       
+[root@localhost tomcat]# ll
+总用量 145272
+-rw-r--r-- 1 root root   9287772 3月   8 23:50 apache-tomcat-9.0.0.M18.tar.gz
+-rw-r--r-- 1 root root       310 3月  20 09:09 Dockerfile
+-rw-r--r-- 1 root root 139463702 3月  20 09:01 jdk-7u55-linux-i586.tar.gz
+[root@localhost tomcat]# docker build -t centos-tomcat-file:v1 .
+Sending build context to Docker daemon 148.8 MB
+Step 1/7 : FROM centos
+ ---> 67591570dd29
+Step 2/7 : MAINTAINER leo
+ ---> Using cache
+ ---> 7a7f5cb74241
+Step 3/7 : ADD apache-tomcat-9.0.0.M18.tar.gz /usr/local/src
+ ---> Using cache
+ ---> cd6331be6891
+Step 4/7 : ADD jdk-7u55-linux-i586.tar.gz /usr/local/src
+ ---> 152d1c2f46e9
+Removing intermediate container 69f5679de556
+Step 5/7 : ENV PATH /usr/local/jdk1.7.0_55/bin:$PATH
+ ---> Running in 51e74148c054
+ ---> 41ccce849364
+Removing intermediate container 51e74148c054
+Step 6/7 : EXPOSE 80
+ ---> Running in 3828487a6f6e
+ ---> e6dda5a1ba61
+Removing intermediate container 3828487a6f6e
+Step 7/7 : CMD catalina.sh run
+ ---> Running in c51f000a4ff5
+ ---> 9f1718b0e789
+Removing intermediate container c51f000a4ff5
+Successfully built 9f1718b0e789
+[root@localhost tomcat]#
+```

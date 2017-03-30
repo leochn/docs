@@ -1,0 +1,1 @@
+# Jenkins构建Java项目直接docker镜像

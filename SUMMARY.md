@@ -4,6 +4,7 @@
 -----
 * [Java](Java/README.md)
     * [springboot-启动你的web项目](JavaScript/springboot-启动你的web项目.md)
+    * [mybatis-深入浅出Mybatis系列](JavaScript/mybatis-深入浅出Mybatis系列.md)
 
 -----
 * [JavaScript](JavaScript/README.md)
