@@ -22,7 +22,7 @@
     * [centos 7.2安装git2.x版本](Tools/centos 7.2安装git2.x版本.md)
     * [git仓库迁移到另外一个git仓库](Tools/git仓库迁移到另外一个git仓库.md)
     * [Linux-Maven 安装与配置](Tools/Linux-Maven 安装与配置.md)
-    * [Jenkins-Git-Maven-Tomcat7构建Java项目](Tools/Jenkins-Git-Maven-Tomcat7自动化构建Java项目.md)
+    * [Jenkins-Git-Maven-Tomcat7构建Java项目](Tools/Jenkins- Git -Maven-Tomcat7自动化构建Java项目.md)
     * [git仓库迁移到另外一个git仓库](Tools/git仓库迁移到另外一个git仓库.md)
 
 
