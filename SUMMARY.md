@@ -19,9 +19,9 @@
     * [docker-容器的基本操作](Tools/docker-容器的基本操作.md)
     * [docker-镜像与仓库](Tools/docker-镜像与仓库.md)
     * [github-部署静态页面](Tools/github-部署静态页面.md)
-    * [centos 7.2安装git2.x版本](Tools/centos 7.2安装git2.x版本.md)
+    * [centos 7.2安装git2.x版本](Tools/centos7.2安装git2.x版本.md)
     * [git仓库迁移到另外一个git仓库](Tools/git仓库迁移到另外一个git仓库.md)
-    * [Linux-Maven 安装与配置](Tools/Linux-Maven 安装与配置.md)
+    * [Linux-Maven 安装与配置](Tools/Linux-Maven安装与配置.md)
     * [Jenkins-Git-Maven-Tomcat7构建Java项目](Tools/Jenkins- Git -Maven-Tomcat7自动化构建Java项目.md)
     * [git仓库迁移到另外一个git仓库](Tools/git仓库迁移到另外一个git仓库.md)
 
