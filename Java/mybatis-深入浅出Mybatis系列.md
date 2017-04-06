@@ -1,6 +1,5 @@
 # 深入浅出Mybatis系列（mybatis源码篇）
 
-
 <!-- toc -->
 
 ## 深入浅出Mybatis系列2---配置简介
