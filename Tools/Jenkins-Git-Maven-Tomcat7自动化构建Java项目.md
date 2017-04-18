@@ -86,6 +86,7 @@ Maven的配置：
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
                 <configuration>
                     <port>8081</port>
                     <path>/</path>

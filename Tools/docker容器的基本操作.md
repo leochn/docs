@@ -3,7 +3,40 @@
 <!-- toc -->
 
 ## 容器的基本操作
-
+* docker加速器
+```
+登陆后运行 curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://d6ca0116.m.daocloud.io 
+此命令会帮助您配置 registry-mirror 。
+在配置完成后，请根据终端中的提示重启 docker，以使配置生效。
+```
+```bash
+[root@localhost ~]# curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://d6ca0116.m.daocloud.io
+docker version >= 1.12
+{"registry-mirrors": ["http://d6ca0116.m.daocloud.io"],
+        "insecure-registries":[
+                "0.0.0.0/0"
+        ]
+}
+Success.
+You need to restart docker to take effect: sudo systemctl restart docker 
+[root@localhost ~]# service docker restart
+Redirecting to /bin/systemctl restart  docker.service
+[root@localhost ~]#
+[root@localhost /]# cd /etc/docker/
+[root@localhost docker]# ll
+总用量 12
+-rw-r--r-- 1 root root 100 4月  14 12:29 daemon.json
+-rw-r--r-- 1 root root  46 4月  14 12:29 daemon.json.bak
+-rw------- 1 root root 281 2月  19 14:56 key.json
+-rw------- 1 root root 281 2月  19 14:56 key.json
+[root@localhost docker]# cat daemon.json
+{"registry-mirrors": ["http://d6ca0116.m.daocloud.io"],
+        "insecure-registries":[
+                "0.0.0.0/0"
+        ]
+}
+[root@localhost docker]#
+```
 * 启动容器
 ```bash
 $ docker run image_name echo "hello word"
@@ -302,6 +335,11 @@ exit
 [root@localhost ~]# docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 [root@localhost ~]#  
+```
+
+* 附加到运行中的容器：docker exec -i -t  容器名 /bin/bash
+```
+[proy@yserver ~]$ docker exec -i -t  d1616077a255  /bin/bash
 ```
 
 * 启动守护式容器：docker run -d 镜像名 [COMMAND] [ARG...]

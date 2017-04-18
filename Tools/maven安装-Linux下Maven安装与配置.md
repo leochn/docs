@@ -1,4 +1,4 @@
-# Linux Maven 安装与配置
+# maven安装-Linux下Maven安装与配置
 
 <!-- toc -->
 
