@@ -1,4 +1,4 @@
-# 在docker之间导出导入镜像
+# docker之间导出导入镜像
 
 ## 导出镜像：
 [root@localhost ~]# docker save -o /root/projecty-jkflow.tar projecty-workflow:v2.0.0
