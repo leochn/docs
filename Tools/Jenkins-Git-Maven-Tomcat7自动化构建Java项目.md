@@ -6,7 +6,7 @@
 在官网下载```.war``` 文件,并放置到tomcat中即可.
 
 ## linux 下安装git
-查看centos 7.2安装git2.x版本.[git安装-centos7.2安装git2](git安装-centos7.2安装git2.md)
+查看centos 7.2安装git2.x版本.[git安装-centos7.2安装git2.x版本](git安装-centos7.2安装git2.x版本.md)
 ## linux 下安装maven
 查看Linux Maven 安装与配置。[maven安装-Linux下Maven安装与配置](maven安装-Linux下Maven安装与配置.md)
 
