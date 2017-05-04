@@ -68,3 +68,21 @@ OmniMarkupPreviewer
     ]
 }
 ```
+
+## 其他插件
+
+```
+SideBarEnhancements：鼠标侧边栏右键增强菜单
+LESS：LESS高亮插件
+Doc​Blockr：生成优美注释
+Color​Picker：调色板
+ConvertToUTF8：文件转码成utf-8
+AutoFileName：快捷输入文件名
+Nodejs：node代码提示
+IMESupport：解决Sublime Text 中文输入法不能跟随光标的问题，需要安装搜狗输入法
+FileDiffs：强大的比较代码不同工具
+
+```
+
+
+## 更多请查看```https://packagecontrol.io/```
