@@ -1,7 +1,7 @@
-	create table PERSON (
-	  XH int, 
-	  XM varchar(10)
-	);
+  create table PERSON (
+    XH int, 
+    XM varchar(50)
+  );
 
    insert into PERSON values(1, 'A');
    insert into PERSON values(2, 'B');
@@ -9,7 +9,7 @@
    insert into PERSON values(4, 'D');
    commit;
    
-   create table ADDRESS (XH int, ZZ varchar(20));
+   create table ADDRESS (XH int, ZZ varchar(50));
    
    insert into ADDRESS values(2, '北京');
    insert into ADDRESS values(1, '广州');
@@ -18,7 +18,7 @@
    commit;
    select * from PERSON;
    select * from ADDRESS;
-   alter table PERSON add ZZ char(10);
+   alter table PERSON add ZZ varchar(50);
    
    
   select * from PERSON   
@@ -31,65 +31,97 @@
   insert into PERSON(XH,XM) values(1, '1AA');
   insert into PERSON(XH,XM) values(3, '1AB');
   
- #### 
-declare 
-   V_XH int;
-   V_ZZ varchar(10);
-   cursor MYCURSOR 
-   is
-   select XH, ZZ from ADDRESS;
-begin
-   open MYCURSOR;
-   loop
-        fetch MYCURSOR into V_XH, V_ZZ;
-        exit when MYCURSOR%NOTFOUND;
-        update PERSON set ZZ = V_ZZ where XH = V_XH;
-   end loop;
-   close MYCURSOR;
-end; 
+#### 
    
 ###
 update PERSON P set P.ZZ = (select A.ZZ from ADDRESS A where A.XH = P.XH);
 
-# 通过游标来操作，把上海的改为上海AA
-
-delimiter
-declare 
-   MYCURSOR03 cursor 
-   for
-   select XH, ZZ from ADDRESS;
-begin
-   open MYCURSOR03;
-   loop
-        fetch MYCURSOR03 into XH, ZZ;
-        # exit when MYCURSOR01%NOTFOUND;
-        # update PERSON set ZZ = V_ZZ where XH = V_XH;
-        select * from PERSON;
-   end loop;
-   close MYCURSOR03;
-end; 
-
-
-
+##### 也可以通过下面游标的方式进行修改
+## 测试存储过程和游标的使用
 drop procedure if exists useCursor ;  
 delimiter //  
 create procedure useCursor()  
   begin  
     declare V_XH int default '';  
-    declare V_ZZ varchar(10) default ''; 
+    declare V_ZZ varchar(50) default ''; 
     declare curl cursor for select XH as V_XH, ZZ as V_ZZ from ADDRESS;    
     open curl;  
     loop
         fetch curl into V_XH, V_ZZ;
-        # fetch curl into XH, ZZ;
-        # update PERSON set ZZ = V_ZZ where XH = V_XH;
-        # select now();   
+        update person set ZZ=V_ZZ where XH = V_XH;  
     end loop;  
     close curl;   
-    select V_XH;
   end;// 
-  
+# 调用存储过程  
 call useCursor();   
+
+update person set ZZ ='(广州)1A' where XM = 'A';
+update person set ZZ ='(广州)11AA' where XM = '1A';
+update person set ZZ ='(广州)111AAA' where XM = '1AA';
+
+### 把 (广州) 字符去掉
+select * from person where ZZ like "%(广州)%";
+
+### 然后把每行的
+
+##  注意:索引从1开始数;含当前索引
+select substring('ADabcdefghijklmn',2);  ## Dabcdefghijklmn
+
+set @order1=substring('ADabcdefghijklmn',2);
+
+drop procedure if exists useCursor ;  
+delimiter // 
+create procedure useCursor()  
+  begin  
+    declare V_ZZZ varchar(50) default ''; 
+    declare V_ZZ varchar(50) default ''; 
+    declare curl cursor for select ZZ as V_ZZ from person where ZZ like "%(广州)%";  
+    open curl;  
+    loop
+        fetch curl into V_ZZ;
+        set V_ZZZ = substring(V_ZZ,5);
+        update person set ZZ=V_ZZZ where ZZ = V_ZZ;    
+    end loop;  
+    close curl;   
+  end;// 
+# 调用存储过程  
+call useCursor();  
+
+
+## 调用存储过程后，会出现如下错误：
+# 错误码: 1329
+# No data - zero rows fetched, selected, or processed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
