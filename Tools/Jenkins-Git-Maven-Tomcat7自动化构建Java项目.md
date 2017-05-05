@@ -13,7 +13,7 @@
 ## linux 下安装tomcat
 
 ## linux 下创建SSH
-```bash
+```
 // 创建免密码登录 ★★★★★
 [root@localhost ~]# ssh-keygen -t rsa -C appchn@163.com
 Generating public/private rsa key pair.
