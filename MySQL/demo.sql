@@ -1,27 +1,20 @@
-  create table PERSON (
-    XH int, 
-    XM varchar(50)
-  );
-
-   insert into PERSON values(1, 'A');
-   insert into PERSON values(2, 'B');
-   insert into PERSON values(3, 'C');
-   insert into PERSON values(4, 'D');
+   create table PERSON (XH int, XM varchar(50),ZZ varchar(50));
+   insert into PERSON (XH,XM) values(1, 'A');
+   insert into PERSON (XH,XM) values(2, 'B');
+   insert into PERSON (XH,XM) values(3, 'C');
+   insert into PERSON (XH,XM) values(4, 'D');
    commit;
    
    create table ADDRESS (XH int, ZZ varchar(50));
-   
    insert into ADDRESS values(2, '北京');
    insert into ADDRESS values(1, '广州');
    insert into ADDRESS values(3, '上海');
    insert into ADDRESS values(4, '西安');
    commit;
+
    select * from PERSON;
    select * from ADDRESS;
-   alter table PERSON add ZZ varchar(50);
-   
-   
-  select * from PERSON   
+
    
   insert into PERSON(XH,XM) values(5, 'E');
   insert into PERSON(XH,XM) values(6, 'F');
@@ -92,7 +85,7 @@ call useCursor();
 # 错误码: 1329
 # No data - zero rows fetched, selected, or processed
 
-
+-- 原因：游标到头了，没有值可以取了
 
 
 
