@@ -57,6 +57,7 @@
             });
 ```
 
+* 双向数据绑定
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -199,6 +200,8 @@
 
 ## 5.事件详解
 ### 5.1事件对象
+
+* ```@click="show($event)" ,事件对象:$event```
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -226,51 +229,133 @@
 </html>
 ```
 
-```html
-
-```
-
 ### 5.2事件冒泡
+* 概念
 ```
-事件冒泡:
+事件冒泡:先child,然后parent.事件的触发顺序自内向外,这就是事件冒泡
+```
+* 阻止事件冒泡
+```
+  a). ev.cancelBubble=true;
+  b). @click.stop="show()" 推荐
 ```
 
-### 5.3默认事件
+* 举例
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function(){
+            new Vue({
+                el:'#box',
+                methods:{
+                    show:function(ev){
+                        alert(1);
+                        ev.cancelBubble=true;
+                    },
+                    show2:function(){
+                        alert(2);
+                    }
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div id="box">
+        <div @click="show2()">
+            <input type="button" value="按钮" @click="show($event)">
+        </div>
+    </div>
+</body>
+</html>
+```
 
+### 5.3默认事件(鼠标右键事件)
+* 阻止默认行为:
+```
+    a). ev.preventDefault();
+    b). @contextmenu.prevent="show()"   推荐
+```
+
+* example
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function(){
+            new Vue({
+                el:'#box',
+                methods:{
+                    show:function(){
+                        alert(1);
+                    }
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div id="box">
+        <input type="button" value="按钮" @contextmenu.prevent="show()">
+    </div>
+</body>
+</html>
+```
 ### 5.4键盘事件
+```
+键盘:
+    @keydown    $event  ev.keyCode
+    @keyup
 
+    常用键:
+        回车
+            a). @keyup.13
+            b). @keyup.enter
+        上、下、左、右
+            @keyup/keydown.left
+            @keyup/keydown.right
+            @keyup/keydown.up
+            @keyup/keydown.down
+```
+
+* ```example```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function(){
+            new Vue({
+                el:'#box',
+                methods:{
+                    show:function(){
+                        alert(1);
+                    }
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div id="box">
+        <input type="text" @keyup.left="show()">
+    </div>
+</body>
+</html>
+```
 ### 5.5事件深入
 
 ```
-    v-on:click/mouseover......
-    
-    简写的:
-    @click=""       推荐
 
-    事件对象:
-        @click="show($event)"
-    事件冒泡:
-        阻止冒泡:  
-            a). ev.cancelBubble=true;
-            b). @click.stop 推荐
-    默认行为(默认事件):
-        阻止默认行为:
-            a). ev.preventDefault();
-            b). @contextmenu.prevent    推荐
-    键盘:
-        @keydown    $event  ev.keyCode
-        @keyup
-
-        常用键:
-            回车
-                a). @keyup.13
-                b). @keyup.enter
-            上、下、左、右
-                @keyup/keydown.left
-                @keyup/keydown.right
-                @keyup/keydown.up
-                @keyup/keydown.down
-            .....
 ```
 
 ## 6.属性:
@@ -285,13 +370,43 @@
     <img v-bind:src="url" alt="">   效果可以出来，不会发404请求
 ```
 
-## 7.class:
+* ```example```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function(){
+            new Vue({
+                el:'#box',
+                data:{
+                    url:'https://www.baidu.com/img/bd_logo1.png',
+                    w:'200px',
+                    t:'这是一张美丽的图片'
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div id="box">
+        <!--<img src="{{url}}" alt="">-->
+        <img :src="url" alt="" :width="w" :title="t">
+    </div>
+</body>
+</html>
+```
+
+## 7.class
+* 概况
 ```
     :class=""   v-bind:class=""
     :style=""   v-bind:style=""
 
-    :class="[red]"  red是数据
-    :class="[red,b,c,d]"
+    :class="[a]"  a是数据
+    :class="[a,b,c,d]"
     
     :class="{red:a, blue:false}"
 
@@ -301,6 +416,82 @@
             json:{red:a, blue:false}
         }
 ```
+* ```:class="[a,b,c,d]",a是数据```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .red{
+            color: red;
+        }
+        .blue{
+            background: blue;
+        }
+    </style>
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function(){
+            new Vue({
+                el:'#box',
+                data:{
+                    a:'red',
+                    b:'blue'
+                },
+                methods:{
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div id="box">
+        <strong :class="[a,b]">文字...</strong>
+    </div>
+</body>
+</html>
+```
+
+* ```example```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .red{
+            color: red;
+        }
+        .blue{
+            background: blue;
+        }
+    </style>
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function(){
+            new Vue({
+                el:'#box',
+                data:{
+                    json:{
+                        red:true,
+                        blue:true
+                    }
+                },
+                methods:{
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div id="box">
+        <strong :class="json">文字...</strong>
+    </div>
+</body>
+</html>
+```
+
 ## 8.style
 ```
     style:
@@ -308,6 +499,42 @@
     :style="[c,d]"
         注意:  复合样式，采用驼峰命名法
     :style="json"
+```
+* ```example```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .red{
+            color: red;
+        }
+        .blue{
+            background: blue;
+        }
+    </style>
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function(){
+            new Vue({
+                el:'#box',
+                data:{
+                    c:{color:'red'},
+                    b:{backgroundColor:'blue'}
+                },
+                methods:{
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div id="box">
+        <strong :style="[c,b]">文字...</strong>
+    </div>
+</body>
+</html>
 ```
 
 ## 模板:
@@ -317,18 +544,68 @@
     
     {{{msg}}}   HTML转意输出
 ```
+* ```example```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .red{
+            color: red;
+        }
+        .blue{
+            background: blue;
+        }
+    </style>
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function(){
+            new Vue({
+                el:'#box',
+                data:{
+                    msg:'abc'
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div id="box">
+        <input type="text" v-model="msg">
+        <br>
+        {{msg}}
+        <br>
+        {{*msg}}
+        <br>
+        <!-- 输入:<h3>hello</h3>,这里输出hello -->
+        {{{msg}}}
+    </div>
+</body>
+</html>
+```
 ## 过滤器:-> 过滤模板数据
 ```
+    -----------------------------
+    <div id="box">
+        {{'welcome'|uppercase}}
+        <br>
+        {{'WELCOME'|lowercase}}
+    </div>
+    -----------------------------
     系统提供一些过滤器:
-    
+    {{'welcome'|uppercase}}
+    {{'WELCOME'|lowercase}}
+
     {{msg| filterA}}
     {{msg| filterA | filterB}}
 
     uppercase   eg: {{'welcome'| uppercase}}
     lowercase
-    capitalize
+    capitalize  eg: {{'WELCOME'|lowercase|capitalize}}
 
     currency    钱
+    {{12|currency '￥'}}
 
     {{msg| filterA 参数}}
 
