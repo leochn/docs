@@ -614,10 +614,7 @@
 ## 交互:
 ```
     $http   （ajax）
-
-    如果vue想做交互
-
-    引入: vue-resouce
+    如果vue想做交互,需要引入vue-resouce.js
 
     get:
         获取一个普通文本数据:
@@ -626,7 +623,7 @@
         },function(res){
             alert(res.status);
         });
-        给服务发送数据:√
+        给服务发送数据:√ 推荐
         this.$http.get('get.php',{
             a:1,
             b:2
@@ -662,6 +659,53 @@
         });
         
 https://www.baidu.com/s?wd=s
+```
+
+* ```example```
+```html
+<!-- 进行http请求必须启动服务,否则会出现如下错误:
+XMLHttpRequest cannot load http://localhost:8085/alarms. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
+XMLHttpRequest cannot load file:///D:/workspace-neon/vdemo/src/main/webapp/static/json/alarm.json. Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="static/js/vue.js"></script>
+    <script src="static/js/vue-resource.js"></script>
+    <script>
+        window.onload=function(){
+            new Vue({
+                el:'body',
+                data:{
+
+                },
+                methods:{
+                    get:function(){
+                        this.$http.get('http://localhost:8085/alarms').then(function(res){
+                            console.log("res.data.msg:" + res.data.msg);
+                        },function(res){
+                            //alert(res.data);
+                        });
+                    },
+                     get2:function(){
+                        this.$http.get('static/json/alarm.json').then(function(res){
+                            console.log("res.data[0].alarmTypeId=" + res.data[0].alarmTypeId);
+                        },function(res){
+                            //alert(res.data);
+                        });
+                    }
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <input type="button" value="按钮" @click="get()">
+    <br>
+    <input type="button" value="按钮2" @click="get2()">
+</body>
+</html>
 ```
 
 
