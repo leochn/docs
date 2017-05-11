@@ -86,3 +86,24 @@ Vue Syntax Highlight: vue插件
 
 
 ## 更多请查看```https://packagecontrol.io/```
+
+
+## Sublime Text离线安装插件的方法
+```
+第1步：
+找一台可以联网的电脑，打开已经安装了Package Control的Sublime Text，使用Package Control搜索所需插件时，可以看到该插件对应的github地址，记下该地址并登录(也可以直接去github搜索插件名称，也可找到对应的插件)。例如插件JsFormat的github地址为https://github.com/jdc0589/JsFormat，登录后点击下图中的按钮即可下载插件：
+```
+
+![sublime插件安装](./images/sublime插件安装.png)
+
+```
+第2步：将下载到本地的ZIP包解压后，得到同名的文件夹，如图所示：
+```
+
+![sublime插件安装2](./images/sublime插件安装2.png)
+
+```
+第3步：刚刚解压出的文件夹也就是我们需要的插件。这个文件夹的名字也就是安装插件后Sublime Text中所显示的插件的名字，因此你可以修改这个文件夹名字为JsFormat（也可以不改，名字只是影响显示，对功能没有任何影响）。然后打开Sublime Text，点击工具栏中的Preferences -> Browse Packages，即可打开Packages文件夹（这就是上文中提到的存放插件的文件夹）。将刚刚的JsFormat文件夹复制到Packages文件夹内，重启Sublime Text后，插件就已经装好了.
+
+至此，插件安装完成。接下来就可以愉快的使用插件进行开发啦。
+```
