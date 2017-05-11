@@ -1,7 +1,16 @@
 # vue1.x进阶
 
 <!-- toc -->
+## 0. bower前端管理工具
+```
+bower-> （前端）包管理器
+    npm install bower -g
+        验证: bower --version
 
+bower install <包名>
+bower uninstall <包名>
+bower info <包名> 查看包版本信息
+```
 ## 1.vue生命周期
 * 钩子函数
 ```
