@@ -753,23 +753,205 @@ var vm=new Vue({
 
 #### 10.5.1 子组件想获取父组件数据
 ```
-    在调用子组件：
+    1.在父组件中调用子组件：
         <bbb :m="数据"></bbb>
-    子组件之内:
+    2.1.子组件之内:
         props:['m','myMsg']
         props:{
-            'm':String,
+            'm':String, // 可以指定数量类型
             'myMsg':Number
         }
 ```
 
+* example,该示例中子组件无法获取父组件的msg数据
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <aaa></aaa>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#box',
+            components:{
+                'aaa':{
+                    data(){
+                        return {
+                            msg:'我是父组件的数据'
+                        }
+                    },
+                    template:'<h2>我是父组件aaa</h2><bbb></bbb>',
+                    components:{
+                        'bbb':{
+                            // 这里子组件无法获取父组件的msg数据
+                            template:'<h3>我是子组件bbb->{{msg}}</h3>'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+```
 
 
+* example 子组件可以获取父组件数据
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <aaa></aaa>
+    </div>
+    <template id="aaa">
+        <h1>11111</h1>
+        <bbb :mmm="msg2"></bbb> <!-- 1.在父组件中把值赋给自定义属性 -->
+    </template>
+    <script>
+        var vm=new Vue({
+            el:'#box',
+            components:{
+                'aaa':{
+                    data(){
+                        return {
+                            msg2:'我是父组件的数据'
+                        }
+                    },
+                    template:'#aaa',
+                    components:{
+                        'bbb':{
+                            props:['mmm'],  // 2.在子组件中使用props
+                            template:'<h3>我是子组件bbb->{{mmm}}</h3>'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+```
 
+* example
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <aaa></aaa>
+    </div>
+    <template id="aaa">
+        <h1>父组件...</h1>
+        <bbb :mmm="msg2" :my-msg="msg"></bbb> <!-- 模板内用中划线 -->
+    </template>
+    <script>
+        var vm=new Vue({
+            el:'#box',
+            components:{
+                'aaa':{
+                    data(){
+                        return {
+                            msg:111,
+                            msg2:'我是父组件的数据'
+                        }
+                    },
+                    template:'#aaa',
+                    components:{
+                        'bbb':{
+                            props:{
+                                'mmm':String,   //可以指定数据类型
+                                'myMsg':Number  //模板内用中划线,这里用驼峰命名方式
+                            },
+                            template:'<h3>我是子组件bbb->{{mmm}} <br> {{myMsg}}</h3>'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+```
 #### 10.5.2 父组件获取子组件数据
 ```
 子组件把自己的数据,发送到父级
 vm.$emit(事件名,数据);
+v-on:   @
+```
+
+* example
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <aaa></aaa>
+    </div>
+    <template id="aaa">
+        <span>我是父级 -> {{msg}}</span>
+        <bbb @child-msg="get"></bbb>
+    </template>
+    <template id="bbb">
+        <h3>子组件---</h3>
+        <input type="button" value="send" @click="send">
+    </template>
+    <script>
+        var vm=new Vue({
+            el:'#box',
+            components:{
+                'aaa':{
+                    data(){
+                        return {
+                            msg:'父组件数据aaa',
+                            msg2:'我是父组件的数据'
+                        }
+                    },
+                    template:'#aaa',
+                    methods:{
+                        get(msg){
+                            this.msg=msg;
+                        }
+                    },
+                    components:{
+                        'bbb':{
+                            data(){
+                                return {
+                                    a:'我是子组件的数据bbb'
+                                }
+                            },
+                            template:'#bbb',
+                            methods:{
+                                send(){
+                                    this.$emit('child-msg',this.a);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
 ```
 
 #### 10.5.3 父子组件通讯
@@ -781,16 +963,353 @@ vm.$broadcast(事件名,数据)   父级向子级广播数据
     在vue2.0里面已经，报废了
 ```
 
+## 11.slot:
+```
+如果在使用模板的时候,要在模板中添加数据,则可以使用slot
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <aaa>
+            <!-- 在使用aaa模板的时候,添加了ul元素 -->
+            <ul>
+                <li>1111</li>
+                <li>2222</li>
+                <li>3333</li>
+            </ul>
+        </aaa>
+        <hr>
+        <aaa></aaa>
+    </div>
+    <template id="aaa">
+        <h1>xxxx</h1>
+        <slot>这是默认的情况</slot> <!-- 表示在使用模板的时候,该slot中的元素可以被其他替换 -->
+        <p>welcome vue</p>
+    </template>
+    <script>
+        var vm=new Vue({
+            el:'#box',
+            components:{
+                'aaa':{
+                    template:'#aaa'
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
+```
+
+* example添加多个slot
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <aaa>
+            <ul slot="ul-slot">
+                <li>1111</li>
+                <li>2222</li>
+                <li>3333</li>
+            </ul>
+            <ol slot="ol-slot">
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ol>
+        </aaa>
+        <hr>
+        <aaa></aaa>
+    </div>
+    <template id="aaa">
+        <h1>xxxx</h1>
+        <slot name="ol-slot">这是默认的情况</slot> <!-- slot的区分 -->
+        <p>welcome vue</p>
+        <slot name="ul-slot">这是默认的情况2</slot>
+    </template>
+    <script>
+        var vm=new Vue({
+            el:'#box',
+            components:{
+                'aaa':{
+                    template:'#aaa'
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+## 12.路由
+```
+vue-> SPA应用，单页面应用
+    vue-resouce 交互
+    vue-router  路由
+
+    根据不同url地址，出现不同效果
+```
+### 12.1路由
+* 路由的基本使用方法
+```
+html:
+    <a v-link="{path:'/home'}">主页</a>   跳转链接
+    
+    展示内容:
+    <router-view></router-view>
+js:
+    //1. 准备一个根组件
+    var App=Vue.extend();
+
+    //2. Home News组件都准备
+    var Home=Vue.extend({
+        template:'<h3>我是主页</h3>'
+    });
+
+    var News=Vue.extend({
+        template:'<h3>我是新闻</h3>'
+    });
+
+    //3. 准备路由
+    var router=new VueRouter();
+
+    //4. 关联
+    router.map({
+        'home':{
+            component:Home
+        },
+        'news':{
+            component:News
+        }
+    });
+
+    //5. 启动路由
+    router.start(App,'#box');
+
+    //6. 跳转:
+    router.redirect({
+        '/':'/home'
+    });
+```
+
+* example
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <script src="bower_components/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li>
+                <a v-link="{path:'/home'}">主页</a>
+            </li>
+            <li>
+                <a v-link="{path:'/news'}">新闻</a>
+            </li>
+        </ul>
+        <div>
+            <router-view></router-view>
+        </div>  
+    </div>
+
+    <script>
+        //1. 准备一个根组件
+        var App=Vue.extend();
+        
+        //2. Home News组件都准备
+        var Home=Vue.extend({
+            template:'<h3>我是主页</h3>'
+        });
+
+        var News=Vue.extend({
+            template:'<h3>我是新闻</h3>'
+        });
+
+        //3. 准备路由
+        var router=new VueRouter();
+
+        //4. 关联
+        router.map({
+            'home':{
+                component:Home
+            },
+            'news':{
+                component:News
+            }
+        });
+
+        //5. 启动路由
+        router.start(App,'#box');
+
+        //6. 跳转,默认跳转到home页面
+        router.redirect({
+            '/':'/home'
+        });
+    </script>
+</body>
+</html>
+```
+
+### 12.2多层路由(嵌套路由)
+```
+    主页  home
+        登录  home/login
+        注册  home/reg
+    新闻页 news
+
+    subRoutes:{
+        'login':{
+            component:{
+                template:'<strong>我是登录信息</strong>'
+            }
+        },
+        'reg':{
+            component:{
+                template:'<strong>我是注册信息</strong>'
+            }
+        }
+    }
+```
+
+* example
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="bower_components/vue/dist/vue.js"></script>
+    <script src="bower_components/vue-router/dist/vue-router.js"></script>
+    <style>
+        .v-link-active{
+            font-size: 20px;
+            color: #f60;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li>
+                <a v-link="{path:'/home'}">主页</a>
+            </li>
+            <li>
+                <a v-link="{path:'/news'}">新闻</a>
+            </li>
+        </ul>
+        <div>
+            <router-view></router-view>
+        </div>  
+    </div>
+
+    <template id="home">
+        <h3>我是主页</h3>
+        <div>
+            <a v-link="{path:'/home/login/zns'}">登录</a>
+            <a v-link="{path:'/home/reg'}">注册</a>
+        </div>
+        <div>
+            <router-view></router-view>
+        </div>
+    </template>
+    <template id="news">
+        <h3>我是新闻</h3>
+        <div>
+            <a v-link="{path:'/news/detail/001'}">新闻001</a>
+            <a v-link="{path:'/news/detail/002'}">新闻002</a>
+        </div>
+        <router-view></router-view>
+    </template>
+    <template id="detail">
+        {{$route.params | json}}
+        <br>
+        {{$route.path}}
+        <br>
+        {{$route.query | json}}
+    </template>
+    <script>
+        //1. 准备一个根组件
+        var App=Vue.extend();
+
+        //2. Home News组件都准备
+        var Home=Vue.extend({
+            template:'#home'
+        });
+
+        var News=Vue.extend({
+            template:'#news'
+        });
+
+        var Detail=Vue.extend({
+            template:'#detail'
+        });
+
+        //3. 准备路由
+        var router=new VueRouter();
+
+        //4. 关联
+        router.map({
+            'home':{
+                component:Home,
+                subRoutes:{
+                    'login/:name':{
+                        component:{
+                            template:'<strong>我是登录信息 {{$route.params | json}}</strong>'
+                        }
+                    },
+                    'reg':{
+                        component:{
+                            template:'<strong>我是注册信息</strong>'
+                        }
+                    }
+                }
+            },
+            'news':{
+                component:News,
+                subRoutes:{
+                    '/detail/:id':{
+                        component:Detail
+                    }
+                }
+            }
+        });
+
+        //5. 启动路由
+        router.start(App,'#box');
+
+        //6. 跳转
+        router.redirect({
+            '/':'home'
+        });
+    </script>
+</body>
+</html>
+```
+
+### 12.3路由其他信息
+```
+    /detail/:id     /age/:age
+    {{$route.params | json}}    ->  当前参数
+    {{$route.path}} ->  当前路径
+    {{$route.query | json}} ->  数据
+```
 
 
-slot:
-
-
-
-路由
-
-
-多层路由
 
 
 
