@@ -11,6 +11,36 @@ bower install <包名>
 bower uninstall <包名>
 bower info <包名> 查看包版本信息
 ```
+
+```
+$ bower info vue
+bower vue#*                 not-cached https://github.com/vuejs/vue.git#*
+bower vue#*                    resolve https://github.com/vuejs/vue.git#*
+bower vue#*                   download https://github.com/vuejs/vue/archive/v2.3.3.tar.gz
+bower vue#*                    extract archive.tar.gz
+bower vue#*                   resolved https://github.com/vuejs/vue.git#2.3.3
+
+{
+  name: 'vue',
+  homepage: 'https://github.com/vuejs/vue',
+  version: '2.3.3'
+}
+
+Available versions:
+  - 2.3.3
+  - 2.3.2
+  - 2.3.1
+  - 2.3.0
+  - 2.2.6
+  - 2.2.5
+  - 2.2.4
+  - 2.2.3
+  - 2.2.2
+  .........................
+Show 87 additional prereleases with 鈥榖ower info vue --verbose鈥▒
+You can request info for a specific version with 'bower info vue#<version>'
+
+```
 ## 1.vue生命周期
 * 钩子函数
 ```
