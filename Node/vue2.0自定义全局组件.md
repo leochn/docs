@@ -8,7 +8,8 @@ vue init webpack-simple vue-loading-demo
 
 ## 2.在src目录下,新建components/loading文件夹,目录结构如下
 ```
-|-loading
+|-components
+  |-loading
     |-index.js     //导出组件,并且install
     |-Loading.vue  //Loading组件
 ```
@@ -204,6 +205,28 @@ a {
 ## 7. 酷炫效果
 ![vue-全局组件2](./images/vue-全局组件02.PNG)
 
+## 8. 给自定义组件添加点击事件,修改Loading.vue,添加script代码
+```
+<template>
+    <div class="loader" @click="show">
+        <div class="loader-inner ball-scale-multiple">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+    </div>
+</template>
 
+<script>
+    export default {
+        methods:{
+            // 给组件添加点击事件
+            show:function(){
+                alert('helloLoader..........');
+            }
+        }
+    }
+</script>
+```
 
 
