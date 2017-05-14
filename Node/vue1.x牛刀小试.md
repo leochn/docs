@@ -232,11 +232,37 @@ npm run dev
   },
 ```
 
+## 3.脚手架
+### 3.1 vue-cli:vue脚手架
+```
+vue-cli:vue脚手架,帮你提供好基本项目结构
+```
 
+### 3.2 项目模板
+```
+  simple    个人觉得一点用都没有
+  webpack 可以使用(大型项目)
+      Eslint 检查代码规范，
+      单元测试
+  webpack-simple  个人推荐使用, 没有代码检查  √
 
+  browserify  ->  自己看
+  browserify-simple
+```
 
-
-
+### 3.3 基本使用流程:
+```
+1. npm install vue-cli -g 安装 vue命令环境
+  验证安装ok?
+    vue --version
+2. 生成项目模板
+  vue init <模板名> 本地文件夹名称
+  其中:<模板名> 就是指3.2中的simple、webpack等项目模板。
+3. 进入到生成目录里面
+  cd xxx
+  npm install
+4. npm run dev
+```
 
 
 
