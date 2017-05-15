@@ -20,7 +20,9 @@ import LoadingComponent from './Loading.vue'
 const Loading = {
     install: function(Vue) {
         //alert(122);
-        Vue.component('Loading', LoadingComponent)
+        Vue.component('Loading', LoadingComponent);
+        // 这里的Loading,就是mian.js中 import Loader from './components/Loading' 的components下面的Loading
+        // 这里的Loading,就是App.vue中使用的组件 <Loading></Loading>
     }
 };
 export default Loading
@@ -57,8 +59,8 @@ export default Loading
 import Vue from 'vue'
 import App from './App.vue'
 
-import Loading from './components/Loading'
-Vue.use(Loading)
+import Loader from './components/Loading'
+Vue.use(Loader)
 
 new Vue({
   el: '#app',
