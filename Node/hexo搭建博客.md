@@ -144,9 +144,11 @@ npm install hexo -g
 ```
 
 
-## 1.3 hexo版本查看
+### 1.3 hexo版本查看
 ```
-D:\worksapce-node\hexo>hexo -v
+leo@lenovo MINGW64 /d/worksapce-node
+$ hexo -v
+hexo: 3.3.5
 hexo-cli: 1.0.2
 os: Windows_NT 10.0.14393 win32 x64
 http_parser: 2.7.0
@@ -159,5 +161,49 @@ icu: 58.2
 modules: 48
 openssl: 1.0.2k
 
-D:\worksapce-node\hexo>
 ```
+
+## 2. 创建hexo项目
+### 2.1 新建hexo文件夹,并进行init
+```
+leo@lenovo MINGW64 /d/worksapce-node
+$ cd hexo/
+
+leo@lenovo MINGW64 /d/worksapce-node/hexo
+$ hexo init
+```
+
+### 2.2 安装依赖包
+```
+cnpm install
+```
+
+### 2.3 运行hexo,默认的4000端口可能会被占用,端口修改为8089
+```
+leo@lenovo MINGW64 /d/worksapce-node/hexo
+$ hexo s -g -p 8089
+INFO  Start processing
+INFO  Hexo is running at http://localhost:8089/. Press Ctrl+C to stop.
+```
+
+### 2.4 运行效果
+![hexo效果](./images/hexo-001.PNG)
+
+### 2.5 修改主题样式
+
+### 2.6 创建自己的博客
+```
+http://www.cnblogs.com/dantefung/p/d8c48ba8030bcab7cfc364d423186fee.html
+
+http://hifor.net/2015/07/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-hexo-github/
+
+
+```
+
+## 3. hexo发布到github中
+
+
+## 4. hexo的github站点绑定自己的域名
+
+
+## 5. 让goole和baidu能搜索到自己的博客
