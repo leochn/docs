@@ -14,135 +14,15 @@
 ```
 
 ## 1 安装Hexo
-### 1.1 ```安装hexo-cli:``` ```npm install hexo-cli -g```
+### 1.1 ```安装hexo-cli:``` 
 ```
-D:\worksapce-node\hexo>npm install hexo-cli -g
-C:\Users\leo\AppData\Roaming\npm\hexo -> C:\Users\leo\AppData\Roaming\npm\node_modules\hexo-cli\bin\hexo
-
-> dtrace-provider@0.8.1 install C:\Users\leo\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\dtrace-provider
-> node scripts/install.js
-
-
-> hexo-util@0.6.0 postinstall C:\Users\leo\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\hexo-util
-> npm run build:highlight
-
-
-> hexo-util@0.6.0 build:highlight C:\Users\leo\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\hexo-util
-> node scripts/build_highlight_alias.js > highlight_alias.json
-
-C:\Users\leo\AppData\Roaming\npm
-`-- hexo-cli@1.0.2
-  +-- abbrev@1.1.0
-  +-- bluebird@3.5.0
-  +-- chalk@1.1.3
-  | +-- ansi-styles@2.2.1
-  | +-- escape-string-regexp@1.0.5
-  | +-- has-ansi@2.0.0
-  | | `-- ansi-regex@2.1.1
-  | +-- strip-ansi@3.0.1
-  | `-- supports-color@2.0.0
-  +-- hexo-fs@0.1.6
-  | +-- chokidar@1.7.0
-  | | +-- anymatch@1.3.0
-  | | | +-- arrify@1.0.1
-  | | | `-- micromatch@2.3.11
-  | | |   +-- arr-diff@2.0.0
-  | | |   | `-- arr-flatten@1.0.3
-  | | |   +-- array-unique@0.2.1
-  | | |   +-- braces@1.8.5
-  | | |   | +-- expand-range@1.8.2
-  | | |   | | `-- fill-range@2.2.3
-  | | |   | |   +-- is-number@2.1.0
-  | | |   | |   +-- isobject@2.1.0
-  | | |   | |   +-- randomatic@1.1.6
-  | | |   | |   `-- repeat-string@1.6.1
-  | | |   | +-- preserve@0.2.0
-  | | |   | `-- repeat-element@1.1.2
-  | | |   +-- expand-brackets@0.1.5
-  | | |   | `-- is-posix-bracket@0.1.1
-  | | |   +-- extglob@0.3.2
-  | | |   +-- filename-regex@2.0.1
-  | | |   +-- kind-of@3.2.0
-  | | |   | `-- is-buffer@1.1.5
-  | | |   +-- normalize-path@2.1.1
-  | | |   | `-- remove-trailing-separator@1.0.1
-  | | |   +-- object.omit@2.0.1
-  | | |   | +-- for-own@0.1.5
-  | | |   | | `-- for-in@1.0.2
-  | | |   | `-- is-extendable@0.1.1
-  | | |   +-- parse-glob@3.0.4
-  | | |   | +-- glob-base@0.3.0
-  | | |   | `-- is-dotfile@1.0.2
-  | | |   `-- regex-cache@0.4.3
-  | | |     +-- is-equal-shallow@0.1.3
-  | | |     `-- is-primitive@2.0.0
-  | | +-- async-each@1.0.1
-  | | +-- glob-parent@2.0.0
-  | | +-- inherits@2.0.3
-  | | +-- is-binary-path@1.0.1
-  | | | `-- binary-extensions@1.8.0
-  | | +-- is-glob@2.0.1
-  | | | `-- is-extglob@1.0.0
-  | | +-- path-is-absolute@1.0.1
-  | | `-- readdirp@2.1.0
-  | |   +-- minimatch@3.0.4
-  | |   | `-- brace-expansion@1.1.7
-  | |   |   +-- balanced-match@0.4.2
-  | |   |   `-- concat-map@0.0.1
-  | |   +-- readable-stream@2.2.9
-  | |   | +-- buffer-shims@1.0.0
-  | |   | +-- core-util-is@1.0.2
-  | |   | +-- isarray@1.0.0
-  | |   | +-- process-nextick-args@1.0.7
-  | |   | +-- string_decoder@1.0.0
-  | |   | `-- util-deprecate@1.0.2
-  | |   `-- set-immediate-shim@1.0.1
-  | `-- graceful-fs@4.1.11
-  +-- hexo-log@0.1.2
-  | `-- bunyan@1.8.10
-  |   +-- dtrace-provider@0.8.1
-  |   | `-- nan@2.6.2
-  |   +-- moment@2.18.1
-  |   +-- mv@2.1.1
-  |   | +-- mkdirp@0.5.1
-  |   | | `-- minimist@0.0.8
-  |   | +-- ncp@2.0.0
-  |   | `-- rimraf@2.4.5
-  |   |   `-- glob@6.0.4
-  |   |     +-- inflight@1.0.6
-  |   |     | `-- wrappy@1.0.2
-  |   |     `-- once@1.4.0
-  |   `-- safe-json-stringify@1.0.4
-  +-- hexo-util@0.6.0
-  | +-- camel-case@3.0.0
-  | | +-- no-case@2.3.1
-  | | | `-- lower-case@1.1.4
-  | | `-- upper-case@1.1.3
-  | +-- cross-spawn@4.0.2
-  | | +-- lru-cache@4.0.2
-  | | | +-- pseudomap@1.0.2
-  | | | `-- yallist@2.1.2
-  | | `-- which@1.2.14
-  | |   `-- isexe@2.0.0
-  | +-- highlight.js@9.11.0
-  | +-- html-entities@1.2.1
-  | `-- striptags@2.2.1
-  +-- minimist@1.2.0
-  +-- object-assign@4.1.1
-  `-- tildify@1.2.0
-    `-- os-homedir@1.0.2
-
-npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.0.0 (node_modules\hexo-cli\node_modules\chokidar\node_modules\fsevents):
-npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.1: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
-
-D:\worksapce-node\hexo>
+npm install hexo-cli -g
 ```
 
 ### 1.2 可能你会有WARN,但不用担心,这不会影响你的正常使用,然后安装hexo
 ```
 npm install hexo -g
 ```
-
 
 ### 1.3 hexo版本查看
 ```
@@ -186,24 +66,77 @@ INFO  Start processing
 INFO  Hexo is running at http://localhost:8089/. Press Ctrl+C to stop.
 ```
 
-### 2.4 运行效果
+### 2.3.1 几个hexo常用的命令,#后面为注释
+```
+hexo g #完整命令为hexo generate,用于生成静态文件
+hexo s #完整命令为hexo server,用于启动服务器，主要用来本地预览
+hexo d #完整命令为hexo deploy,用于将本地文件发布到github上
+hexo n #完整命令为hexo new,用于新建一篇文章
+```
+
+### 2.4 运行效果,在本地就可以浏览了
 ![hexo效果](./images/hexo-001.PNG)
 
-### 2.5 修改主题样式
+## 3. 发布本地hexo文件到github中
+### 3.1 在github中创建hexo仓库
+![hexo](./images/hexo-002.PNG)
+![hexo](./images/hexo-003.PNG)
 
-### 2.6 创建自己的博客
+### 3.2 在_config.yml中进行配置
 ```
-http://www.cnblogs.com/dantefung/p/d8c48ba8030bcab7cfc364d423186fee.html
-
-http://hifor.net/2015/07/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-hexo-github/
-
-
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: git@github.com:leochn/leochn.github.io.git
 ```
 
-## 3. hexo发布到github中
+### 3.3 安装hexo-deployer-git自动部署发布工具
+```
+npm instal lhexo-deployer-git  --save
+```
 
+### 3.4 发布到Github
+```
+   // hexo g  生成静态文件 
+   // hexo d  同步到github
+   输入如下命令：hexo clean && hexo g && hexo d
+```
 
-## 4. hexo的github站点绑定自己的域名
+### 3.5 浏览效果 ```https://leochn.github.io/```
+![hexo网络效果](./images/hexo-004.PNG)
 
+### 3.5 发表一篇文章
+#### 3.5.1 在git bash 中执行命令
+```
+lij01@SH-RAD02-V17 MINGW64 /d/workspace-node/hexo
+$ hexo new "my new post"
+INFO  Created: D:\workspace-node\hexo\source\_posts\my-new-post.md
 
-## 5. 让goole和baidu能搜索到自己的博客
+lij01@SH-RAD02-V17 MINGW64 /d/workspace-node/hexo
+```
+
+#### 3.5.2 用Markdown修改```my-new-post.md```文件
+```
+---
+title: my new post #可以改成中文的，如“新文章”
+date: 2017-05-16 09:45:54 #发表日期，一般不改动
+categories: blog #文章文类
+tags: [文章] #文章标签，多于一项时用这种格式，只有一项时使用tags: blog
+---
+#这里是正文，用markdown写，你可以选择写一段显示在首页的简介后，加上
+<!--more-->，在<!--more-->之前的内容会显示在首页，之后的内容会被隐藏，当游客点击Read more才能看到。
+```
+
+#### 3.5.3 效果
+![hexo效果](./images/hexo-005.PNG)
+
+## 4. hexo主题下载及配置
+
+## 5. hexo的Jacman主题优化
+
+## 6. 将hexo博客同时托管到github和coding
+
+## 7. hexo的github站点绑定自己的域名
+
+## 8. hexo提交搜索引擎(百度+谷歌)
