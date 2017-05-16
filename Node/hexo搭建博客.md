@@ -107,7 +107,7 @@ npm instal lhexo-deployer-git  --save
 ![hexo网络效果](./images/hexo-004.PNG)
 
 ### 3.5 发表一篇文章
-#### 3.5.1 在git bash 中执行命令
+#### 3.5.1 在git bash中执行命令 ```hexo new "my new post"```
 ```
 lij01@SH-RAD02-V17 MINGW64 /d/workspace-node/hexo
 $ hexo new "my new post"
@@ -132,6 +132,33 @@ tags: [文章] #文章标签，多于一项时用这种格式，只有一项时�
 ![hexo效果](./images/hexo-005.PNG)
 
 ## 4. hexo主题下载及配置
+### 4.1 下载主题
+```bash
+# 在hexo目录下,git clone git@github.com:iissnan/hexo-theme-next.git themes/next
+lij01@SH-RAD02-V17 MINGW64 /d/workspace-node/hexo (master)
+$ git clone git@github.com:iissnan/hexo-theme-next.git themes/next
+Cloning into 'themes/next'...
+remote: Counting objects: 9066, done.
+remote: Total 9066 (delta 0), reused 0 (delta 0), pack-reused 9066
+Receiving objects: 100% (9066/9066), 12.32 MiB | 3.85 MiB/s, done.
+Resolving deltas: 100% (5144/5144), done.
+```
+
+### 4.2 修改hexo/_config.yml文件
+```
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: next
+```
+
+### 4.3 运行
+```
+$ hexo s -g -p 8089
+```
+
+### 4.4 效果
+![hexo效果](./images/hexo-006.PNG)
 
 ## 5. hexo的Jacman主题优化
 
