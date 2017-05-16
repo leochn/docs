@@ -131,7 +131,7 @@ tags: [文章] #文章标签，多于一项时用这种格式，只有一项时�
 #### 3.5.3 效果
 ![hexo效果](./images/hexo-005.PNG)
 
-## 4. hexo主题下载及配置
+## 4. hexo的next主题下载及配置
 ### 4.1 下载主题
 ```bash
 # 在hexo目录下,git clone git@github.com:iissnan/hexo-theme-next.git themes/next
@@ -160,7 +160,8 @@ $ hexo s -g -p 8089
 ### 4.4 效果
 ![hexo效果](./images/hexo-006.PNG)
 
-## 5. hexo的Jacman主题优化
+## 5. hexo的next主题优化
+链接: [http://theme-next.iissnan.com/](http://theme-next.iissnan.com/)
 
 ## 6. 将hexo博客同时托管到github和coding
 
