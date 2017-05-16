@@ -168,3 +168,8 @@ $ hexo s -g -p 8089
 ## 7. hexo的github站点绑定自己的域名
 
 ## 8. hexo提交搜索引擎(百度+谷歌)
+
+
+https://www.zhihu.com/question/31377141?sort=created
+
+http://blog.csdn.net/u013282507/article/details/54944395
