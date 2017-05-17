@@ -93,7 +93,7 @@ deploy:
 
 ### 3.3 安装hexo-deployer-git自动部署发布工具
 ```
-npm instal lhexo-deployer-git  --save
+npm install hexo-deployer-git --save
 ```
 
 ### 3.4 发布到Github
@@ -163,13 +163,52 @@ $ hexo s -g -p 8089
 ## 5. hexo的next主题优化
 链接: [http://theme-next.iissnan.com/](http://theme-next.iissnan.com/)
 
-## 6. 将hexo博客同时托管到github和coding
+## 6. hexo的github站点绑定自己的域名
+### 6.1 GitHub Pages 绑定域名
+```
+http://blog.csdn.net/u013282507/article/details/54944395
+```
 
-## 7. hexo的github站点绑定自己的域名
+### 6.2 在仓库里添加CNAME文件(有两总方式)
+```
+第一种：
+  在仓库里添加一个文件,命名为CNAME,文件名大写且没有后缀；文件里填写要绑定的域名且不要包含Http://和www . 如: netsite.win
+第二种:
+  进入github仓库的Settings,GitHub Pages中找到Custom domain添加域名后保存即可
+```
+
+![hexo-github配置](./images/hexo-007-github设置.PNG)
+
+```
+对于hexo方式发布的博客,每次hexo d 后,会把CNAME文件删掉
+需要手动方式在blog-name/source下添加CNAME文件,输入绑定的域名:netsite.win
+```
+
+### 6.3 域名解析
+```
+我是在阿里云购买的域名,这里以阿里云的操作为例,登陆阿里云,依次进入 控制台-域名与网站(万网)-云解析DNS,找到已购买的域名点击解析按钮,添加如下4项解析.
+    A       @     默认  151.101.76.133      --  10分钟        
+    CNAME   www   默认  leochn.github.io.   --  10分钟      
+    A       @     默认  192.30.252.154      --  10分钟   
+    A       @     默认  192.30.252.153      --  10分钟  
+其中:
+  192.30.252.153 和 192.30.252.154 为github官网的IP.
+  151.101.76.133 为leochn.github.io服务的IP,可以通过 ping eochn.github.io 来获取.
+  leochn.github.io. 中最后的那个点,不能忘记.
+```
+
+![hexo-dns配置](./images/hexo-008修改dns配置.PNG)
+
+## 7. 将hexo博客同时托管到github和coding
+
 
 ## 8. hexo提交搜索引擎(百度+谷歌)
 
 
-https://www.zhihu.com/question/31377141?sort=created
 
+
+
+
+
+https://www.zhihu.com/question/31377141?sort=created
 http://blog.csdn.net/u013282507/article/details/54944395
