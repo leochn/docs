@@ -23,13 +23,12 @@
     * [vue2.0路由](Node/vue2.0路由.md)
     * [vue2.0动画](Node/vue2.0动画.md)
     * [vue2.0自定义全局组件](Node/vue2.0自定义全局组件.md)
-    * [vuex](Node/vuex.md)
 
 -----
 * [MySQL](MySQL/README.md)
     * [linux下MySQL表名不区分大小写的设置](MySQL/linux下MySQL表名不区分大小写的设置.md)
     * [Linux(docker)中mysql表名大小写区分](MySQL/Linux(docker)中mysql表名大小写区分.md)
-    * * [mysql游标](MySQL/mysql游标.md)
+    * [mysql游标](MySQL/mysql游标.md)
 
 -----
 * [Tools](Tools/README.md)
