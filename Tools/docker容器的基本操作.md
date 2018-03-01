@@ -342,6 +342,35 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 [proy@yserver ~]$ docker exec -i -t  d1616077a255  /bin/bash
 ```
 
+* 附加到运行中的容器：docker exec -i -t  容器ID bash
+```
+[proy@yserver ~]# docker ps
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                                    NAMES
+8efadbc852f3        webcenter/activemq:latest   "/app/run.sh"            5 weeks ago         Up 14 minutes       0.0.0.0:1883->1883/tcp, 5672/tcp, 0.0.0  blissful_almeida
+5592d7f239c5        redis                       "docker-entrypoint.s…"   5 weeks ago         Up 5 weeks          0.0.0.0:6379->6379/tcp                   nifty_mestorf
+[proy@yserver ~]#
+[proy@yserver ~]# docker exec -it 8ef bash
+root@8efadbc852f3:/opt/activemq# ll
+total 15944
+drwxr-xr-x  1 activemq activemq     4096 Mar  1 01:23 ./
+drwxr-xr-x  1 root     root         4096 Jan 15  2017 ../
+-rw-r--r--  4 activemq activemq    40580 Dec 19  2016 LICENSE
+-rw-r--r--  4 activemq activemq     3334 Dec 19  2016 NOTICE
+-rw-r--r--  4 activemq activemq     2610 Dec 19  2016 README.txt
+-rwxr-xr-x  4 activemq activemq 16207404 Dec 19  2016 activemq-all-5.14.3.jar*
+drwxr-xr-x  1 activemq activemq     4096 Jan 15  2017 bin/
+drwxr-xr-x  2 activemq activemq     4096 Jan 18 06:55 conf/
+drwxr-xr-x  2 activemq activemq     4096 Jan 18 06:55 conf.tmp/
+drwxr-xr-x  2 activemq activemq     4096 Jan 15  2017 data/
+drwxr-xr-x  2 activemq activemq     4096 Jan 15  2017 docs/
+drwxr-xr-x  7 activemq activemq     4096 Dec 19  2016 examples/
+drwxr-xr-x  6 activemq activemq     4096 Jan 15  2017 lib/
+drwxr-xr-x 12 root     root         4096 Mar  1 01:23 tmp/
+drwxr-xr-x  6 activemq activemq     4096 Jan 15  2017 webapps/
+drwxr-xr-x  3 activemq activemq     4096 Jan 15  2017 webapps-demo/
+root@8efadbc852f3:/opt/activemq#
+```
+
 * 启动守护式容器：docker run -d 镜像名 [COMMAND] [ARG...]
 ```bash
 [root@localhost ~]# docker run --name dc2 -d centos /bin/sh -c "while true;do echo hello world; sleep 1;done"
