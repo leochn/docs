@@ -1,4 +1,4 @@
-# subliem之配置
+# sublime之配置
 
 <!-- toc -->
 
