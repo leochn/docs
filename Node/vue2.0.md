@@ -109,7 +109,7 @@
         v-for="(val,index) in array"
 ```
 
-* example
+ example
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -177,7 +177,7 @@
         现在: {{msg | toDou('12','5')}}
 ```
 
-* example
+ example
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -226,7 +226,7 @@
         b). 只是不报错, mounted中转
 ```
 
-* example
+ example
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -340,7 +340,7 @@
     }.bind(this));
 ```
 
-* example
+ example
 ```html
 <!DOCTYPE html>
 <html lang="en">

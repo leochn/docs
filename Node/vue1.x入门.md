@@ -60,7 +60,8 @@
             });
 ```
 
-* 双向数据绑定
+双向数据绑定
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -172,7 +173,8 @@
         v-on:click/mouseout/mouseover/dblclick/mousedown.....
 ```
 
-* 显示隐藏:
+显示隐藏:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -204,7 +206,8 @@
 ## 5.事件详解
 ### 5.1事件对象
 
-* ```@click="show($event)" ,事件对象:$event```
+@click="show($event)" ,事件对象:$event
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -233,17 +236,21 @@
 ```
 
 ### 5.2事件冒泡
-* 概念
+概念
+
 ```
 事件冒泡:先child,然后parent.事件的触发顺序自内向外,这就是事件冒泡
 ```
-* 阻止事件冒泡
+
+阻止事件冒泡
+
 ```
   a). ev.cancelBubble=true;
   b). @click.stop="show()" 推荐
 ```
 
-* 举例
+举例
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -278,13 +285,15 @@
 ```
 
 ### 5.3默认事件(鼠标右键事件)
-* 阻止默认行为:
+阻止默认行为:
+
 ```
     a). ev.preventDefault();
     b). @contextmenu.prevent="show()"   推荐
 ```
 
-* example
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -328,7 +337,8 @@
             @keyup/keydown.down
 ```
 
-* ```example```
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -373,7 +383,8 @@
     <img v-bind:src="url" alt="">   效果可以出来，不会发404请求
 ```
 
-* ```example```
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -403,7 +414,7 @@
 ```
 
 ## 7.class
-* 概况
+概况
 ```
     :class=""   v-bind:class=""
     :style=""   v-bind:style=""
@@ -419,7 +430,9 @@
             json:{red:a, blue:false}
         }
 ```
-* ```:class="[a,b,c,d]",a是数据```
+
+:class="[a,b,c,d]",a是数据
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -456,7 +469,8 @@
 </html>
 ```
 
-* ```example```
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -503,7 +517,9 @@
         注意:  复合样式，采用驼峰命名法
     :style="json"
 ```
-* ```example```
+
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -547,7 +563,9 @@
     
     {{{msg}}}   HTML转意输出
 ```
-* ```example```
+
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -664,7 +682,8 @@
 https://www.baidu.com/s?wd=s
 ```
 
-* ```example```
+example
+
 ```html
 <!-- 进行http请求必须启动服务,否则会出现如下错误:
 XMLHttpRequest cannot load http://localhost:8085/alarms. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.

@@ -212,3 +212,5 @@ http://blog.csdn.net/u013282507/article/details/54944395
 
 https://www.zhihu.com/question/31377141?sort=created
 http://blog.csdn.net/u013282507/article/details/54944395
+
+http://www.joryhe.com/2016-05-29-how_to_create_leancloud_read_Counter.html

@@ -41,8 +41,10 @@ Show 87 additional prereleases with 鈥榖ower info vue --verbose鈥▒
 You can request info for a specific version with 'bower info vue#<version>'
 
 ```
+
 ## 1.vue生命周期
-* 钩子函数
+钩子函数
+
 ```
     created         ->   实例已经创建 √
     beforeCompile   ->   编译之前
@@ -53,7 +55,8 @@ You can request info for a specific version with 'bower info vue#<version>'
     destroyed       ->   销毁之后
 ```
 
-* ```example```
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -137,6 +140,7 @@ You can request info for a specific version with 'bower info vue#<version>'
 
 ## 3.计算属性
 ### 3.1计算属性
+
 ```
 模板内的表达式是非常便利的，但是它们实际上只用于简单的运算。在模板中放入太多的逻辑会让模板过重且难以维护。例如：
 <div id="example">
@@ -191,6 +195,7 @@ You can request info for a specific version with 'bower info vue#<version>'
 ```
 
 ### 3.3结果
+
 ```
 a => 100 
 b => 101 
@@ -212,11 +217,14 @@ vm.now       //输出如下:
 ```
 
 ### 3.4计算缓存与method
+
 ```
 根据以上的结果，相比而言，只要发生重新渲染，method 调用总会执行该函数。
 我们为什么需要缓存？假设我们有一个性能开销比较大的的计算属性 A ，它需要遍历一个极大的数组和做大量的计算。然后我们可能有其他的计算属性依赖于 A 。如果没有缓存，我们将不可避免的多次执行 A 的 getter！如果你不希望有缓存，请用 method 替代。
 ```
+
 ### 3.5计算setter
+
 ```js
 var vm=new Vue({
     el:'#box',
@@ -237,6 +245,7 @@ var vm=new Vue({
 ```
 
 ## 4.vue实例简单方法
+
 ```
     vm.$el  ->  就是元素
     vm.$data  ->  就是data
@@ -247,7 +256,9 @@ var vm=new Vue({
 
     vm.$log();  ->  查看现在数据的状态
 ```
-* ```example```
+
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -279,6 +290,7 @@ var vm=new Vue({
 ```
 
 ## 5.循环
+
 ```
     v-for="value in data"
     会有重复数据?默认无法添加重复数据,加入track-by,则可以添加
@@ -286,7 +298,8 @@ var vm=new Vue({
     track-by='$index/uid'
 ```
 
-* ```example```
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -319,6 +332,7 @@ var vm=new Vue({
 ```
 
 ## 6.自定义指令
+
 ```
     // red 是指令名称
     Vue.directive(red,function(参数){
@@ -333,6 +347,7 @@ var vm=new Vue({
 ```
 
 ### 6.1 example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -363,6 +378,7 @@ var vm=new Vue({
 ```
 
 ### 6.2 自定义键盘信息
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -404,13 +420,15 @@ var vm=new Vue({
 ```
 
 ## 7.监听数据变化
+
 ```
     vm.$el/$mount/$options/....
     vm.$watch(name,fnCb);  //浅度监听
     vm.$watch(name,fnCb,{deep:true});  //深度监视
 ```
 
-* example
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -455,6 +473,7 @@ var vm=new Vue({
 ```
 
 ## 8.自定义过滤器
+
 ```
     自定义过滤器:  model ->过滤 -> view
         Vue.filter(name,function(input){
@@ -492,6 +511,7 @@ var vm=new Vue({
 ```
 
 ## 9.过渡(动画)
+
 ```
     本质走的css3: transtion ,animation
 
@@ -513,6 +533,7 @@ var vm=new Vue({
 ## 10.组件
 ### 10.1 定义组件的一种方式
 #### 10.1.1 全局组件
+
 ```
 var Aaa=Vue.extend({
     template:'<h3>我是标题3</h3>'
@@ -549,6 +570,7 @@ Vue.component('aaa',Aaa);
 ```
 
 #### 10.1.2 局部组件
+
 ```
 局部组件:放到某个组件内部
 var vm=new Vue({
@@ -617,7 +639,8 @@ var vm=new Vue({
 ```
 
 ### 10.3 组件配合模板
-* 概述
+概述
+
 ```
     1. template:'<h2 @click="change">标题2->{{msg}}</h2>'
     2. 单独放到某个地方的两种方式
@@ -637,7 +660,8 @@ var vm=new Vue({
         </template>
 ```
 
-* example
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -676,7 +700,8 @@ var vm=new Vue({
 </html>
 ```
 
-* example
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -802,7 +827,8 @@ var vm=new Vue({
         }
 ```
 
-* example,该示例中子组件无法获取父组件的msg数据
+example,该示例中子组件无法获取父组件的msg数据
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -840,7 +866,8 @@ var vm=new Vue({
 ```
 
 
-* example 子组件可以获取父组件数据
+example 子组件可以获取父组件数据
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -881,7 +908,8 @@ var vm=new Vue({
 </html>
 ```
 
-* example
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -932,7 +960,8 @@ vm.$emit(事件名,数据);
 v-on:   @
 ```
 
-* example
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -1047,7 +1076,8 @@ vm.$broadcast(事件名,数据)   父级向子级广播数据
 </html>
 ```
 
-* example添加多个slot
+example添加多个slot
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -1093,6 +1123,7 @@ vm.$broadcast(事件名,数据)   父级向子级广播数据
 ```
 
 ## 12.路由
+
 ```
 vue-> SPA应用，单页面应用
     vue-resouce 交互
@@ -1101,7 +1132,9 @@ vue-> SPA应用，单页面应用
     根据不同url地址，出现不同效果
 ```
 ### 12.1路由
-* 路由的基本使用方法
+
+路由的基本使用方法
+
 ```
 html:
     <a v-link="{path:'/home'}">主页</a>   跳转链接
@@ -1143,7 +1176,8 @@ js:
     });
 ```
 
-* example
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -1226,7 +1260,8 @@ js:
     }
 ```
 
-* example
+example
+
 ```html
 <!DOCTYPE html>
 <html lang="en">

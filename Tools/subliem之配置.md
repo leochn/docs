@@ -84,6 +84,15 @@ FileDiffs：强大的比较代码不同工具
 Vue Syntax Highlight: vue插件
 ```
 
+## 其他
+```
+sublime中有没有*.vue文件格式化插件？
+
+HTML/CSS/JS Prettify 这个插件就行,
+安装后 tools->HTML/CSS/JS Prettify->set prettify preference
+在"allowed_file_extensions": ["htm", "html", "xhtml", "shtml", "xml", "svg","vue"] 加上vue就好了.
+```
+
 
 ## 更多请查看```https://packagecontrol.io/```
 
